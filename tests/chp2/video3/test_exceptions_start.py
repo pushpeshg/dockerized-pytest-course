@@ -8,6 +8,10 @@ def test_make_one_point():
 
 
 def test_invalid_point_generation():  # TO DO
-    with pytest.raises(Exception) as exp:
+    with pytest.raises(ValueError) as exp:
         Point("Buenos Aires", 12.25664, -555.23564)
-    
+    assert str(exp.value) == "Invalid value"
+
+    with pytest.raises(ValueError) as exp:
+        Point(5, 12.11386, -55.08232)
+    assert str(exp.value) == "City name should be string"
